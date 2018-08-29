@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
+import { AppWrapper, Title } from './styles';
 import Board from '../Board';
 
-const AppWrapper = styled.div`
-    padding: 5px;
-`;
-
-const Title = styled.h1`
-    font-size: 20px;
-    margin: 5px 0 10px;
-    text-align: center;
-`;
 
 export default class App extends Component {
   state = {
@@ -19,12 +10,21 @@ export default class App extends Component {
       title: 'Hello',
       description: 'This is a description',
       date: '28th August',
+      id: 0,
     },
     {
       title: '2nd tile',
       description: 'I love RB6',
       date: '28th August',
+      id: 1,
     }],
+  }
+
+  deleteTile = (id) => {
+    const { tiles } = this.state;
+    const newTiles = [...tiles];
+    const updatedTiles = newTiles.filter(element => element.id !== id);
+    this.setState({ tiles: updatedTiles });
   }
 
   render() {
@@ -32,7 +32,10 @@ export default class App extends Component {
     return (
       <AppWrapper>
         <Title>Idea Board</Title>
-        <Board tiles={tiles} />
+        <Board
+          tiles={tiles}
+          deleteTile={this.deleteTile}
+        />
       </AppWrapper>
     );
   }

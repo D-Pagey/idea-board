@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "eslint": "^5.4.0",
-    "material-design-icons": "^3.0.1",
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "react-scripts": "1.1.4",

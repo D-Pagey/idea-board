@@ -1,14 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import { BoardWrapper } from './styles';
 import Tile from '../Tile';
 
-const BoardWrapper = styled.div`
-
-`;
-
-export default function Board({ tiles }) {
-  const renderTiles = tiles.map(tile => <Tile data={tile} />);
+export default function Board({ tiles, deleteTile }) {
+  const renderTiles = tiles.map((tile) => {
+    return <Tile data={tile} key={tile.id} deleteTile={deleteTile} />;
+  });
 
   return (
     <BoardWrapper>
