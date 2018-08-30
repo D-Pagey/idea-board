@@ -1,7 +1,9 @@
 import React from 'react';
+import { objectOf, any, func } from 'prop-types';
 
 import {
   TileWrapper,
+  TileHeader,
   TitleInput,
   TileDescription,
   DateStamp,
@@ -10,12 +12,18 @@ import {
 export default function Tile({ data, deleteTile }) {
   return (
     <TileWrapper>
-      <div>
+      <TileHeader>
         <TitleInput
           defaultValue={data.title}
         />
-        <i className="material-icons" onClick={ () => deleteTile(data.id) }>delete</i>
-      </div>
+        <i
+          className="material-icons"
+          onClick={() => deleteTile(data.id)}
+          role="button"
+          tabIndex="0"
+        >delete
+        </i>
+      </TileHeader>
       <TileDescription
         defaultValue={data.description}
       />
@@ -25,3 +33,8 @@ export default function Tile({ data, deleteTile }) {
     </TileWrapper>
   );
 }
+
+Tile.propTypes = {
+  data: objectOf(any).isRequired,
+  deleteTile: func.isRequired,
+};

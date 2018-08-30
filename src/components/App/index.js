@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { AppWrapper, Title } from './styles';
 import Board from '../Board';
 
-
 export default class App extends Component {
   state = {
     tiles: [{
@@ -22,9 +21,23 @@ export default class App extends Component {
 
   deleteTile = (id) => {
     const { tiles } = this.state;
-    const newTiles = [...tiles];
-    const updatedTiles = newTiles.filter(element => element.id !== id);
+
+    const updatedTiles = tiles.filter(element => element.id !== id);
     this.setState({ tiles: updatedTiles });
+  }
+
+  addTile = () => {
+    const { tiles } = this.state;
+
+    const newTile = {
+      title: `Genius idea #${tiles.length + 1}`,
+      description: '',
+      date: '29th August',
+      id: tiles[tiles.length - 1].id + 1,
+    };
+
+    const moreTiles = [...tiles, newTile];
+    this.setState({ tiles: moreTiles });
   }
 
   render() {
@@ -35,6 +48,7 @@ export default class App extends Component {
         <Board
           tiles={tiles}
           deleteTile={this.deleteTile}
+          addTile={this.addTile}
         />
       </AppWrapper>
     );

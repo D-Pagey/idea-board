@@ -9,6 +9,12 @@ export const TileWrapper = styled.div`
   padding: 3px;
 `;
 
+export const TileHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 export const TitleInput = styled.input.attrs({
   type: 'text',
   placeholder: 'Title',
@@ -18,6 +24,7 @@ export const TitleInput = styled.input.attrs({
   padding: 2px;
   border-radius: 6px;
   border: 0;
+  width: 75%;
 `;
 
 export const TileDescription = styled.input.attrs({
