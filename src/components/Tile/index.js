@@ -5,6 +5,7 @@ import {
   TileWrapper,
   TileHeader,
   TitleInput,
+  DeleteIcon,
   TileDescription,
   DateStamp,
 } from './styles';
@@ -16,13 +17,7 @@ export default function Tile({ data, deleteTile }) {
         <TitleInput
           defaultValue={data.title}
         />
-        <i
-          className="material-icons"
-          onClick={() => deleteTile(data.id)}
-          role="button"
-          tabIndex="0"
-        >delete
-        </i>
+        <DeleteIcon onClick={() => deleteTile(data.id)}>delete</DeleteIcon>
       </TileHeader>
       <TileDescription
         defaultValue={data.description}

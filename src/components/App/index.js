@@ -8,13 +8,13 @@ export default class App extends Component {
     tiles: [{
       title: 'Hello',
       description: 'This is a description',
-      date: '28th August',
+      date: new Date().toLocaleTimeString().slice(0, 5),
       id: 0,
     },
     {
       title: '2nd tile',
       description: 'I love RB6',
-      date: '28th August',
+      date: new Date().toLocaleTimeString().slice(0, 5),
       id: 1,
     }],
   }
@@ -32,7 +32,7 @@ export default class App extends Component {
     const newTile = {
       title: `Genius idea #${tiles.length + 1}`,
       description: '',
-      date: '29th August',
+      date: new Date().toLocaleTimeString().slice(0, 5),
       id: tiles[tiles.length - 1].id + 1,
     };
 

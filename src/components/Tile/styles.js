@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const TileWrapper = styled.div`
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid darkgray;
   border-radius: 6px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   display: flex;
   flex-direction: column;
   margin: 15px 10px;
-  padding: 3px;
+  padding: 4px 7px;
 `;
 
 export const TileHeader = styled.div`
@@ -19,7 +21,7 @@ export const TitleInput = styled.input.attrs({
   type: 'text',
   placeholder: 'Title',
 })`
-  color: blue;
+  color: black;
   font-size: 1.5rem;
   padding: 2px;
   border-radius: 6px;
@@ -27,11 +29,21 @@ export const TitleInput = styled.input.attrs({
   width: 75%;
 `;
 
+export const DeleteIcon = styled.i.attrs({
+  className: 'material-icons',
+  role: 'button',
+  tabIndex: '0',
+})`
+  position: relative;
+  top: 3px;
+`;
+
 export const TileDescription = styled.input.attrs({
   type: 'text',
   placeholder: 'Start noting your idea...',
 })`
   font-size: 1rem;
+  margin: 4px 0;
   padding: 0;
 `;
 

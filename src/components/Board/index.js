@@ -1,7 +1,7 @@
 import React from 'react';
 import { arrayOf, any, func } from 'prop-types';
 
-import { BoardWrapper } from './styles';
+import { BoardWrapper, AddIcon } from './styles';
 import Tile from '../Tile';
 
 export default function Board({ tiles, deleteTile, addTile }) {
@@ -11,13 +11,7 @@ export default function Board({ tiles, deleteTile, addTile }) {
   return (
     <BoardWrapper>
       {renderTiles}
-      <i
-        className="material-icons"
-        onClick={addTile}
-        role="button"
-        tabIndex="0"
-      >add_circle_outline
-      </i>
+      <AddIcon onClick={addTile}>add_circle_outline</AddIcon>
     </BoardWrapper>
   );
 }
