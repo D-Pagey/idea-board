@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 
-import { AppWrapper, Title } from './styles';
+import { AppWrapper, Title, AddIcon } from './styles';
+import initialState from './initialState';
 import Board from '../Board';
 
 export default class App extends Component {
   state = {
-    tiles: [{
-      title: 'Hello',
-      description: 'This is a description',
-      date: new Date().toLocaleTimeString().slice(0, 5),
-      id: 0,
-    },
-    {
-      title: '2nd tile',
-      description: 'I love RB6',
-      date: new Date().toLocaleTimeString().slice(0, 5),
-      id: 1,
-    }],
+    tiles: initialState,
+  }
+
+  handleChange = (e, id, field) => {
+    const { tiles } = this.state;
+
+    const tile = tiles[id];
+    tile[field] = e.target.value;
+    this.setState({ tiles });
   }
 
   deleteTile = (id) => {
@@ -28,12 +26,13 @@ export default class App extends Component {
 
   addTile = () => {
     const { tiles } = this.state;
+    const { length } = tiles;
 
     const newTile = {
-      title: `Genius idea #${tiles.length + 1}`,
+      title: `Genius idea #${length + 1}`,
       description: '',
       date: new Date().toLocaleTimeString().slice(0, 5),
-      id: tiles[tiles.length - 1].id + 1,
+      id: length ? tiles[length - 1].id + 1 : 0,
     };
 
     const moreTiles = [...tiles, newTile];
@@ -48,8 +47,9 @@ export default class App extends Component {
         <Board
           tiles={tiles}
           deleteTile={this.deleteTile}
-          addTile={this.addTile}
+          handleChange={this.handleChange}
         />
+        <AddIcon onClick={this.addTile}>add_circle_outline</AddIcon>
       </AppWrapper>
     );
   }

@@ -38,17 +38,30 @@ export const DeleteIcon = styled.i.attrs({
   top: 3px;
 `;
 
-export const TileDescription = styled.input.attrs({
+export const TileDescription = styled.textarea.attrs({
   type: 'text',
   placeholder: 'Start noting your idea...',
+  maxLength: 140,
 })`
-  font-size: 1rem;
+  font-family: 'Montserrat';
+  font-size: .9rem;
   margin: 4px 0;
-  padding: 0;
+  padding: 3px 2px;
+`;
+
+export const SubtleDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const DateStamp = styled.p`
   color: darkgray;
   font-size: .7rem;
-  margin: 5px 2px 0 ;
+  margin: 5px 2px 0;
+`;
+
+export const CharacterCount = styled.p`
+  color: darkgray;
+  font-size: .7rem;
+  margin: 5px 2px 0;
 `;

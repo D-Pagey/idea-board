@@ -8,23 +8,41 @@ import {
   DeleteIcon,
   TileDescription,
   DateStamp,
+  CharacterCount,
+  SubtleDiv,
 } from './styles';
 
-export default function Tile({ data, deleteTile }) {
+export default function Tile({ data, deleteTile, handleChange }) {
+  const {
+    description,
+    title,
+    date,
+    id,
+  } = data;
+
+  const charCount = description.length > 120
+    ? <CharacterCount>Characters left = {140 - description.length}</CharacterCount>
+    : null;
+
   return (
     <TileWrapper>
       <TileHeader>
         <TitleInput
-          defaultValue={data.title}
+          defaultValue={title}
+          onChange={e => handleChange(e, id, 'title')}
         />
-        <DeleteIcon onClick={() => deleteTile(data.id)}>delete</DeleteIcon>
+        <DeleteIcon onClick={() => deleteTile(id)}>delete</DeleteIcon>
       </TileHeader>
       <TileDescription
-        defaultValue={data.description}
+        defaultValue={description}
+        onChange={e => handleChange(e, id, 'description')}
       />
-      <DateStamp>
-        Created at {data.date}
-      </DateStamp>
+      <SubtleDiv>
+        <DateStamp>
+          Created at {date}
+        </DateStamp>
+        {charCount}
+      </SubtleDiv>
     </TileWrapper>
   );
 }
@@ -32,4 +50,5 @@ export default function Tile({ data, deleteTile }) {
 Tile.propTypes = {
   data: objectOf(any).isRequired,
   deleteTile: func.isRequired,
+  handleChange: func.isRequired,
 };
