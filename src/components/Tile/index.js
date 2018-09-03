@@ -1,5 +1,10 @@
 import React from 'react';
-import { objectOf, any, func } from 'prop-types';
+import {
+  objectOf,
+  any,
+  func,
+  number,
+} from 'prop-types';
 
 import {
   TileWrapper,
@@ -12,7 +17,12 @@ import {
   SubtleDiv,
 } from './styles';
 
-export default function Tile({ data, deleteTile, handleChange }) {
+export default function Tile({
+  data,
+  deleteTile,
+  handleChange,
+  index,
+}) {
   const {
     description,
     title,
@@ -29,13 +39,14 @@ export default function Tile({ data, deleteTile, handleChange }) {
       <TileHeader>
         <TitleInput
           defaultValue={title}
-          onChange={e => handleChange(e, id, 'title')}
+          onChange={event => handleChange(index, event)}
+          autoFocus
         />
         <DeleteIcon onClick={() => deleteTile(id)}>delete</DeleteIcon>
       </TileHeader>
       <TileDescription
         defaultValue={description}
-        onChange={e => handleChange(e, id, 'description')}
+        onChange={event => handleChange(index, event)}
       />
       <SubtleDiv>
         <DateStamp>
@@ -51,4 +62,5 @@ Tile.propTypes = {
   data: objectOf(any).isRequired,
   deleteTile: func.isRequired,
   handleChange: func.isRequired,
+  index: number.isRequired,
 };

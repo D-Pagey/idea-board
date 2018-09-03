@@ -9,12 +9,11 @@ export default class App extends Component {
     tiles: initialState,
   }
 
-  handleChange = (e, id, field) => {
-    const { tiles } = this.state;
+  handleChange = (index, event) => {
+    const newState = Object.assign({}, this.state);
+    newState.tiles[index][event.target.name] = event.target.value;
 
-    const tile = tiles[id];
-    tile[field] = e.target.value;
-    this.setState({ tiles });
+    this.setState(newState);
   }
 
   deleteTile = (id) => {

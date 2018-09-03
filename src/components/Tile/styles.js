@@ -20,6 +20,7 @@ export const TileHeader = styled.div`
 export const TitleInput = styled.input.attrs({
   type: 'text',
   placeholder: 'Title',
+  name: 'title',
 })`
   color: black;
   font-size: 1.5rem;
@@ -42,6 +43,7 @@ export const TileDescription = styled.textarea.attrs({
   type: 'text',
   placeholder: 'Start noting your idea...',
   maxLength: 140,
+  name: 'description',
 })`
   font-family: 'Montserrat';
   font-size: .9rem;

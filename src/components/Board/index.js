@@ -9,13 +9,14 @@ export default function Board({
   deleteTile,
   handleChange,
 }) {
-  const renderTiles = tiles.map((tile) => {
+  const renderTiles = tiles.map((tile, index) => {
     return (
       <Tile
         data={tile}
         key={tile.id}
         deleteTile={deleteTile}
         handleChange={handleChange}
+        index={index}
       />
     );
   });
