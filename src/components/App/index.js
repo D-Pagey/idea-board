@@ -13,15 +13,6 @@ export default class App extends Component {
     this.checkLocalStorage();
   }
 
-  saveStateToLocalStorage = () => {
-    const { tiles } = this.state;
-    console.log(this.state);
-
-    if (tiles.length > 0) {
-      localStorage.setItem('tiles', JSON.stringify(tiles));
-    }
-  }
-
   checkLocalStorage = () => {
     let newTiles = [];
 
@@ -31,21 +22,31 @@ export default class App extends Component {
       newTiles = initialState;
     }
 
-    return this.setState({ tiles: newTiles });
+    return this.setState({ tiles: newTiles }, this.saveStateToLocalStorage);
+  }
+
+  saveStateToLocalStorage = () => {
+    const { tiles } = this.state;
+    console.log(this.state);
+
+    if (tiles.length > 0) {
+      localStorage.setItem('tiles', JSON.stringify(tiles));
+    }
   }
 
   handleChange = (index, event) => {
     const newState = Object.assign({}, this.state);
     newState.tiles[index][event.target.name] = event.target.value;
+    newState.tiles[index].updated = new Date().toLocaleTimeString().slice(0, 5);
 
-    this.setState(newState);
+    this.setState(newState, this.saveStateToLocalStorage);
   }
 
   deleteTile = (id) => {
     const { tiles } = this.state;
 
     const updatedTiles = tiles.filter(element => element.id !== id);
-    this.setState({ tiles: updatedTiles });
+    this.setState({ tiles: updatedTiles }, this.saveStateToLocalStorage);
   }
 
   addTile = () => {
@@ -60,7 +61,7 @@ export default class App extends Component {
     };
 
     const moreTiles = [...tiles, newTile];
-    this.setState({ tiles: moreTiles });
+    this.setState({ tiles: moreTiles }, this.saveStateToLocalStorage);
   }
 
   render() {

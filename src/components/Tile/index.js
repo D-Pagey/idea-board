@@ -28,6 +28,7 @@ export default function Tile({
     title,
     date,
     id,
+    updated,
   } = data;
 
   const charCount = description.length > 120
@@ -50,7 +51,7 @@ export default function Tile({
       />
       <SubtleDiv>
         <DateStamp>
-          Created at {date}
+          {updated ? 'Updated' : 'Created'} at {updated || date}
         </DateStamp>
         {charCount}
       </SubtleDiv>
