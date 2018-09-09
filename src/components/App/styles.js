@@ -18,6 +18,32 @@ export const AddIcon = styled.i.attrs({
   role: 'button',
   tabIndex: '0',
 })`
+  cursor: pointer;
   font-size: 30px;
   margin-top: 5px;
+`;
+
+export const SortDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  width: 4.5rem;
+`;
+
+export const SortAlpha = styled.i.attrs({
+  className: 'material-icons',
+  role: 'button',
+  tabIndex: '0',
+})`
+  cursor: pointer;
+  font-size: 30px;
+`;
+
+export const SortDate = styled.i.attrs({
+  className: 'material-icons',
+  role: 'button',
+  tabIndex: '0',
+})`
+  cursor: pointer;
+  font-size: 30px;
 `;

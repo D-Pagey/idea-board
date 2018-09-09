@@ -13,7 +13,7 @@ export default function Board({
     return (
       <Tile
         data={tile}
-        key={tile.id}
+        key={Math.random()}
         deleteTile={deleteTile}
         handleChange={handleChange}
         index={index}

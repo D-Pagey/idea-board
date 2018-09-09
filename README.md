@@ -10,12 +10,12 @@ When working through the task you should treat it as if you're writing real worl
 - [x] Page should be fully responsive.
 - [x] Each idea tile should contain a title and description, which is editable, as well as created/updated time.
 - [x] New ideas should have the title field focused to prompt user to begin typing.
-- [ ] Add the ability to sort ideas by creation date or alphabetically.
+- [x] Add the ability to sort ideas by creation date or alphabetically.
 
 ### Stretch
 - [x] Utilise the localStorage API to persist current state when the page is refreshed.
 - [x] Add a character countdown as the user is approaching the limit of their description text.
-- [ ] Add an unobtrusive notification when an update is made to a tile.
+- [x] Add an unobtrusive notification when an update is made to a tile.
 
 ## Getting started
 `yarn start` will run a development server on `http://localhost:3000`.  

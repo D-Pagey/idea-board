@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
-import { AppWrapper, Title, AddIcon } from './styles';
+import {
+  AppWrapper,
+  Title,
+  AddIcon,
+  SortAlpha,
+  SortDate,
+  SortDiv,
+} from './styles';
 import initialState from './initialState';
 import Board from '../Board';
 
@@ -27,11 +34,21 @@ export default class App extends Component {
 
   saveStateToLocalStorage = () => {
     const { tiles } = this.state;
-    console.log(this.state);
 
     if (tiles.length > 0) {
       localStorage.setItem('tiles', JSON.stringify(tiles));
     }
+  }
+
+  sortDate = (array) => {
+    const sortedArray = [...array].sort((a, b) => b.date > a.date);
+    this.setState({ tiles: sortedArray }, this.saveStateToLocalStorage);
+  }
+
+  sortAlpha = (array) => {
+    const sortedArray = [...array]
+      .sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase());
+    this.setState({ tiles: sortedArray }, this.saveStateToLocalStorage);
   }
 
   handleChange = (index, event) => {
@@ -46,6 +63,9 @@ export default class App extends Component {
     const { tiles } = this.state;
 
     const updatedTiles = tiles.filter(element => element.id !== id);
+    if (updatedTiles.length === 0) {
+      localStorage.removeItem('tiles');
+    }
     this.setState({ tiles: updatedTiles }, this.saveStateToLocalStorage);
   }
 
@@ -57,7 +77,7 @@ export default class App extends Component {
       title: `Genius idea #${length + 1}`,
       description: '',
       date: new Date().toLocaleTimeString().slice(0, 5),
-      id: length ? tiles[length - 1].id + 1 : 0,
+      id: Math.random(),
     };
 
     const moreTiles = [...tiles, newTile];
@@ -78,6 +98,10 @@ export default class App extends Component {
     return (
       <AppWrapper>
         <Title>Idea Board</Title>
+        <SortDiv>
+          <SortAlpha onClick={() => this.sortAlpha(tiles)}>sort_by_alpha</SortAlpha>
+          <SortDate onClick={() => this.sortDate(tiles)}>access_time</SortDate>
+        </SortDiv>
         {content}
         <AddIcon onClick={this.addTile}>add_circle_outline</AddIcon>
       </AppWrapper>
