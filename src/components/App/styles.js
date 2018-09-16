@@ -8,9 +8,9 @@ export const AppWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-font-size: 20px;
-margin: 20px 0 10px;
-text-align: center;
+  font-size: 20px;
+  margin: 20px 0 10px;
+  text-align: center;
 `;
 
 export const AddIcon = styled.i.attrs({

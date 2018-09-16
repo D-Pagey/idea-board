@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  objectOf,
-  any,
+  shape,
+  string,
   func,
   number,
 } from 'prop-types';
@@ -37,6 +37,7 @@ export default function Tile({
 
   return (
     <TileWrapper>
+
       <TileHeader>
         <TitleInput
           defaultValue={title}
@@ -45,22 +46,31 @@ export default function Tile({
         />
         <DeleteIcon onClick={() => deleteTile(id)}>delete</DeleteIcon>
       </TileHeader>
+
       <TileDescription
         defaultValue={description}
         onChange={event => handleChange(index, event)}
       />
+
       <SubtleDiv>
         <DateStamp>
           {updated ? 'Updated' : 'Created'} at {updated || date}
         </DateStamp>
         {charCount}
       </SubtleDiv>
+
     </TileWrapper>
   );
 }
 
 Tile.propTypes = {
-  data: objectOf(any).isRequired,
+  data: shape({
+    description: string,
+    id: number,
+    title: string,
+    date: string,
+    updated: string,
+  }).isRequired,
   deleteTile: func.isRequired,
   handleChange: func.isRequired,
   index: number.isRequired,

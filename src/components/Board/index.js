@@ -1,5 +1,11 @@
 import React from 'react';
-import { arrayOf, any, func } from 'prop-types';
+import {
+  arrayOf,
+  func,
+  shape,
+  string,
+  number,
+} from 'prop-types';
 
 import { BoardWrapper } from './styles';
 import Tile from '../Tile';
@@ -9,27 +15,30 @@ export default function Board({
   deleteTile,
   handleChange,
 }) {
-  const renderTiles = tiles.map((tile, index) => {
-    return (
-      <Tile
-        data={tile}
-        key={Math.random()}
-        deleteTile={deleteTile}
-        handleChange={handleChange}
-        index={index}
-      />
-    );
-  });
-
   return (
     <BoardWrapper>
-      {renderTiles}
+      {tiles.map((tile, index) => (
+        <Tile
+          data={tile}
+          key={Math.random()}
+          deleteTile={deleteTile}
+          handleChange={handleChange}
+          index={index}
+        />
+      ))}
     </BoardWrapper>
   );
 }
 
 Board.propTypes = {
-  tiles: arrayOf(any),
+  tiles: arrayOf(
+    shape({
+      date: string.isRequired,
+      description: string.isRequired,
+      id: number.isRequired,
+      title: string.isRequired,
+    }),
+  ),
   deleteTile: func.isRequired,
   handleChange: func.isRequired,
 };

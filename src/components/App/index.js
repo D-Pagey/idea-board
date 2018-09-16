@@ -21,10 +21,11 @@ export default class App extends Component {
   }
 
   checkLocalStorage = () => {
+    const oldTiles = localStorage.getItem('tiles');
     let newTiles = [];
 
     if (localStorage.length > 0) {
-      newTiles = JSON.parse(localStorage.tiles);
+      newTiles = JSON.parse(oldTiles);
     } else {
       newTiles = initialState;
     }
@@ -37,6 +38,8 @@ export default class App extends Component {
 
     if (tiles.length > 0) {
       localStorage.setItem('tiles', JSON.stringify(tiles));
+    } else {
+      localStorage.removeItem('tiles');
     }
   }
 
@@ -52,20 +55,19 @@ export default class App extends Component {
   }
 
   handleChange = (index, event) => {
-    const newState = Object.assign({}, this.state);
-    newState.tiles[index][event.target.name] = event.target.value;
-    newState.tiles[index].updated = new Date().toLocaleTimeString().slice(0, 5);
+    const { tiles } = this.state;
+    const newTiles = [...tiles];
 
-    this.setState(newState, this.saveStateToLocalStorage);
+    newTiles[index][event.target.name] = event.target.value;
+    newTiles[index].updated = new Date().toLocaleTimeString().slice(0, 5);
+
+    this.setState({ tiles: newTiles }, this.saveStateToLocalStorage);
   }
 
   deleteTile = (id) => {
     const { tiles } = this.state;
 
     const updatedTiles = tiles.filter(element => element.id !== id);
-    if (updatedTiles.length === 0) {
-      localStorage.removeItem('tiles');
-    }
     this.setState({ tiles: updatedTiles }, this.saveStateToLocalStorage);
   }
 
@@ -87,13 +89,13 @@ export default class App extends Component {
   render() {
     const { tiles } = this.state;
 
-    const content = tiles.length > 0
-    && (
-    <Board
-      tiles={tiles}
-      deleteTile={this.deleteTile}
-      handleChange={this.handleChange}
-    />);
+    const content = tiles.length > 0 && (
+      <Board
+        tiles={tiles}
+        deleteTile={this.deleteTile}
+        handleChange={this.handleChange}
+      />
+    );
 
     return (
       <AppWrapper>
