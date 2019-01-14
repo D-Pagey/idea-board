@@ -19,11 +19,10 @@ export default function Board({
     <BoardWrapper>
       {tiles.map((tile, index) => (
         <Tile
-          data={tile}
-          key={Math.random()}
-          deleteTile={deleteTile}
-          handleChange={handleChange}
-          index={index}
+          {...tile}
+          key={tile.id.toString()}
+          deleteTile={() => deleteTile(tile.id)}
+          handleChange={event => handleChange(index, event)}
         />
       ))}
     </BoardWrapper>

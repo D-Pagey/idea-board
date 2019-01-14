@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  shape,
   string,
   func,
-  number,
 } from 'prop-types';
 
 import {
@@ -18,60 +16,56 @@ import {
 } from './styles';
 
 export default function Tile({
-  data,
+  date,
   deleteTile,
   handleChange,
-  index,
+  title,
+  description,
+  updated,
 }) {
-  const {
-    description,
-    title,
-    date,
-    id,
-    updated,
-  } = data;
-
-  const charCount = description.length > 120
-    ? <CharacterCount>Characters left = {140 - description.length}</CharacterCount>
-    : null;
-
   return (
     <TileWrapper>
-
       <TileHeader>
         <TitleInput
           defaultValue={title}
-          onChange={event => handleChange(index, event)}
+          onChange={event => handleChange(event)}
           autoFocus
         />
-        <DeleteIcon onClick={() => deleteTile(id)}>delete</DeleteIcon>
+
+        <DeleteIcon onClick={deleteTile}>delete</DeleteIcon>
       </TileHeader>
 
       <TileDescription
         defaultValue={description}
-        onChange={event => handleChange(index, event)}
+        onChange={event => handleChange(event)}
+        type="text"
+        placeholder="Start noting your idea..."
+        maxLength={140}
       />
 
       <SubtleDiv>
         <DateStamp>
           {updated ? 'Updated' : 'Created'} at {updated || date}
         </DateStamp>
-        {charCount}
-      </SubtleDiv>
 
+        {description.length > 120
+          && <CharacterCount>Characters left = {140 - description.length}</CharacterCount>}
+      </SubtleDiv>
     </TileWrapper>
   );
 }
 
 Tile.propTypes = {
-  data: shape({
-    description: string,
-    id: number,
-    title: string,
-    date: string,
-    updated: string,
-  }).isRequired,
+  date: string.isRequired,
   deleteTile: func.isRequired,
   handleChange: func.isRequired,
-  index: number.isRequired,
+  title: string,
+  description: string,
+  updated: string,
+};
+
+Tile.defaultProps = {
+  title: '',
+  description: '',
+  updated: '',
 };

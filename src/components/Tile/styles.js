@@ -39,12 +39,7 @@ export const DeleteIcon = styled.i.attrs({
   top: 3px;
 `;
 
-export const TileDescription = styled.textarea.attrs({
-  type: 'text',
-  placeholder: 'Start noting your idea...',
-  maxLength: 140,
-  name: 'description',
-})`
+export const TileDescription = styled.textarea`
   font-family: 'Montserrat';
   font-size: .9rem;
   margin: 4px 0;
