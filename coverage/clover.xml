@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1547513047769" clover="3.2.0">
+  <project timestamp="1547513047769" name="All files">
+    <metrics statements="66" coveredstatements="38" conditionals="16" coveredconditionals="10" methods="22" coveredmethods="10" elements="104" coveredelements="58" complexity="0" loc="66" ncloc="66" packages="4" files="9" classes="9">
+      <package name="src">
+        <metrics statements="6" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <file name="index.js" path="C:\Users\Dan\coding\idea-board\src\index.js">
+          <metrics statements="5" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="6" count="0" type="stmt"/>
+        </file>
+        <file name="setupTests.js" path="C:\Users\Dan\coding\idea-board\src\setupTests.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="5" count="3" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.App">
+        <metrics statements="40" coveredstatements="18" conditionals="6" coveredconditionals="4" methods="14" coveredmethods="4"/>
+        <file name="index.js" path="C:\Users\Dan\coding\idea-board\src\components\App\index.js">
+          <metrics statements="34" coveredstatements="12" conditionals="6" coveredconditionals="4" methods="14" coveredmethods="4"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="30" count="1" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="39" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="40" count="1" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="75" count="0" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="86" count="0" type="stmt"/>
+          <line num="90" count="2" type="stmt"/>
+          <line num="92" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="100" count="2" type="stmt"/>
+          <line num="104" count="0" type="stmt"/>
+          <line num="105" count="0" type="stmt"/>
+        </file>
+        <file name="initialState.js" path="C:\Users\Dan\coding\idea-board\src\components\App\initialState.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="styles.js" path="C:\Users\Dan\coding\idea-board\src\components\App\styles.js">
+          <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.Board">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <file name="index.js" path="C:\Users\Dan\coding\idea-board\src\components\Board\index.js">
+          <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+          <line num="18" count="6" type="stmt"/>
+          <line num="21" count="19" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="45" count="2" type="stmt"/>
+        </file>
+        <file name="styles.js" path="C:\Users\Dan\coding\idea-board\src\components\Board\styles.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.Tile">
+        <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <file name="index.js" path="C:\Users\Dan\coding\idea-board\src\components\Tile\index.js">
+          <metrics statements="5" coveredstatements="5" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
+          <line num="26" count="10" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="40" count="1" type="stmt"/>
+          <line num="58" count="3" type="stmt"/>
+          <line num="67" count="3" type="stmt"/>
+        </file>
+        <file name="styles.js" path="C:\Users\Dan\coding\idea-board\src\components\Tile\styles.js">
+          <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="14" count="3" type="stmt"/>
+          <line num="20" count="3" type="stmt"/>
+          <line num="33" count="3" type="stmt"/>
+          <line num="42" count="3" type="stmt"/>
+          <line num="49" count="3" type="stmt"/>
+          <line num="54" count="3" type="stmt"/>
+          <line num="60" count="3" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

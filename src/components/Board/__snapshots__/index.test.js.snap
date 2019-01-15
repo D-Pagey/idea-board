@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board component should render 1`] = `
+<styled.div>
+  <Tile
+    date="11:00"
+    deleteTile={[Function]}
+    description="BNTI gaming worldwide"
+    handleChange={[Function]}
+    id={12345}
+    key="12345"
+    title="Nav"
+    updated=""
+  />
+</styled.div>
+`;
