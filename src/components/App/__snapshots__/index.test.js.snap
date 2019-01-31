@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should render 1`] = `
+<styled.div>
+  <styled.h1>
+    Idea Board
+  </styled.h1>
+  <styled.div>
+    <styled.i
+      onClick={[Function]}
+    >
+      sort_by_alpha
+    </styled.i>
+    <styled.i
+      onClick={[Function]}
+    >
+      access_time
+    </styled.i>
+  </styled.div>
+  <Board
+    deleteTile={[Function]}
+    handleChange={[Function]}
+    tiles={
+      Array [
+        Object {
+          "date": "01:43",
+          "description": "This is a description",
+          "id": 0,
+          "title": "Hello",
+        },
+        Object {
+          "date": "01:43",
+          "description": "I love RB6",
+          "id": 1,
+          "title": "2nd tile",
+        },
+      ]
+    }
+  />
+  <styled.i
+    onClick={[Function]}
+  >
+    add_circle_outline
+  </styled.i>
+</styled.div>
+`;

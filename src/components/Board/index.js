@@ -11,9 +11,9 @@ import { BoardWrapper } from './styles';
 import Tile from '../Tile';
 
 export default function Board({
-  tiles,
-  deleteTile,
   handleChange,
+  deleteTile,
+  tiles,
 }) {
   return (
     <BoardWrapper>

@@ -17,6 +17,7 @@ export const AddIcon = styled.i.attrs({
   className: 'material-icons',
   role: 'button',
   tabIndex: '0',
+  'data-qa': 'add-todo',
 })`
   cursor: pointer;
   font-size: 30px;

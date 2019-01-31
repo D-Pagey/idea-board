@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import Board from '../Board';
+import { STORAGE_KEY } from './constants';
+import initialState from './initialState';
 import {
   AppWrapper,
   Title,
@@ -8,12 +11,10 @@ import {
   SortDate,
   SortDiv,
 } from './styles';
-import initialState from './initialState';
-import Board from '../Board';
 
 export default class App extends Component {
   state = {
-    tiles: [],
+    tiles: initialState,
   }
 
   componentDidMount() {
@@ -21,26 +22,13 @@ export default class App extends Component {
   }
 
   checkLocalStorage = () => {
-    const oldTiles = localStorage.getItem('tiles');
-    let newTiles = [];
-
-    if (localStorage.length > 0) {
-      newTiles = JSON.parse(oldTiles);
-    } else {
-      newTiles = initialState;
-    }
-
-    return this.setState({ tiles: newTiles }, this.saveStateToLocalStorage);
+    const storedTiles = localStorage.getItem(STORAGE_KEY);
+    if (storedTiles) this.setState({ tiles: JSON.parse(storedTiles) });
   }
 
   saveStateToLocalStorage = () => {
     const { tiles } = this.state;
-
-    if (tiles.length > 0) {
-      localStorage.setItem('tiles', JSON.stringify(tiles));
-    } else {
-      localStorage.removeItem('tiles');
-    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tiles));
   }
 
   sortDate = (array) => {
@@ -66,45 +54,43 @@ export default class App extends Component {
 
   deleteTile = (id) => {
     const { tiles } = this.state;
-
     const updatedTiles = tiles.filter(element => element.id !== id);
+
     this.setState({ tiles: updatedTiles }, this.saveStateToLocalStorage);
   }
 
   addTile = () => {
     const { tiles } = this.state;
-    const { length } = tiles;
-
-    const newTile = {
-      title: `Genius idea #${length + 1}`,
+    const moreTiles = [...tiles, {
+      title: `Genius idea #${tiles.length + 1}`,
       description: '',
       date: new Date().toLocaleTimeString().slice(0, 5),
       id: Math.random(),
-    };
+    }];
 
-    const moreTiles = [...tiles, newTile];
     this.setState({ tiles: moreTiles }, this.saveStateToLocalStorage);
   }
 
   render() {
     const { tiles } = this.state;
 
-    const content = tiles.length > 0 && (
-      <Board
-        tiles={tiles}
-        deleteTile={this.deleteTile}
-        handleChange={this.handleChange}
-      />
-    );
-
     return (
       <AppWrapper>
         <Title>Idea Board</Title>
+
         <SortDiv>
           <SortAlpha onClick={() => this.sortAlpha(tiles)}>sort_by_alpha</SortAlpha>
           <SortDate onClick={() => this.sortDate(tiles)}>access_time</SortDate>
         </SortDiv>
-        {content}
+
+        {tiles.length > 0 && (
+          <Board
+            tiles={tiles}
+            deleteTile={this.deleteTile}
+            handleChange={this.handleChange}
+          />
+        )}
+
         <AddIcon onClick={this.addTile}>add_circle_outline</AddIcon>
       </AppWrapper>
     );
